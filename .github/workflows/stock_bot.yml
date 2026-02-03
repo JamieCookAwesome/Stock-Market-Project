@@ -26,6 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install alpaca-py
+          pip install pytz
 
       - name: Run trading bot
         env:
