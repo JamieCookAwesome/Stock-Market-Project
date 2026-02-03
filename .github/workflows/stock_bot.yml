@@ -1,0 +1,35 @@
+name: Alpaca Trading Bot
+
+on:
+  schedule:
+    # Market open (9:35 AM ET ≈ 13:35 UTC)
+    - cron: '35 13 * * 1-5'
+
+    # Midday (12:30 PM ET ≈ 16:30 UTC)
+    - cron: '30 16 * * 1-5'
+
+  workflow_dispatch:  # manual run button
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install alpaca-py
+
+      - name: Run trading bot
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
+        run: |
+          python main.py
