@@ -10,6 +10,10 @@ WATCHLIST = [
     "MSFT",
     "TSLA",
     "NVDA",
-    "AMD"
+    "AMD",
+    "META",
+    "JPM",
+    "HD",
 ]
+
 
