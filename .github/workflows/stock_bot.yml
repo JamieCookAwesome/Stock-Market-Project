@@ -25,7 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r Stock-Market-Project/requirements.txt
+          pip install alpaca-py
+          pip install pytz
 
       - name: Run trading bot
         env:
