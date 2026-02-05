@@ -14,6 +14,9 @@ WATCHLIST = [
     "META",
     "JPM",
     "HD",
+    "AMZN",
+    "WMT",
+    "XOM"
 ]
 
 
