@@ -24,12 +24,12 @@ def main():
     print("-" * 40)
 
     algo = TradingAlgorithm(
-        buy_threshold=0.002,
-        sell_threshold=-0.002,
+        buy_threshold=0.003,
+        sell_threshold=-0.003,
         min_hold_days=1
     )
 
-    while True:
+    for _ in range(3):
         prices = get_latest_prices(data_client, WATCHLIST)
 
         # update
