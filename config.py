@@ -8,7 +8,6 @@ BASE_URL = "https://paper-api.alpaca.markets"
 WATCHLIST = [
     "AAPL",
     "MSFT",
-    "TSLA",
     "NVDA",
     "AMD",
     "META",
