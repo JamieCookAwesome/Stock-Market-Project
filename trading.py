@@ -37,6 +37,7 @@ class TradingAlgorithm:
                 speed_score = 0.0
 
             self.metrics[symbol] = speed_score
+            print(f"{symbol} score = {speed_score:.5f}")
 
     # constraints
     def can_trade(self, symbol: str) -> bool:

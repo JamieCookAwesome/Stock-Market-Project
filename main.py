@@ -24,8 +24,8 @@ def main():
     print("-" * 40)
 
     algo = TradingAlgorithm(
-        buy_threshold=0.003,
-        sell_threshold=-0.003,
+        buy_threshold=0.001,
+        sell_threshold=-0.001,
         min_hold_days=1
     )
 
