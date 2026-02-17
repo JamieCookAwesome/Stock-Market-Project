@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from BST import BST
 class TradingAlgorithm:
     def __init__(
         self,
@@ -47,33 +47,22 @@ class TradingAlgorithm:
         return days_since >= self.min_hold_days
 
 
-    # decision
+        # decision
     def generate_signals(self):
-        """
-        Returns:
-        [
-            {
-                "action": "BUY" | "SELL",
-                "symbol": str,
-                "price": float,
-                "score": float
-            }
-        ]
-        """
         signals = []
 
-        # descending speed score rank
-        ordered = sorted(
-            self.metrics.items(),
-            key=lambda item: item[1],
-            reverse=True
-        )
+        # Build BST from metrics
+        tree = BST()
+        for symbol, score in self.metrics.items():
+            tree.insert(symbol, score)
+
+        # Get descending rank
+        ordered = tree.descending()
 
         for symbol, speed_score in ordered:
             current_price = self.market_data[symbol][-1]
             has_position = self.positions.get(symbol, False)
 
-            # BUY
             if speed_score > self.buy_threshold and not has_position:
                 if self.can_trade(symbol):
                     self.positions[symbol] = True
@@ -86,7 +75,6 @@ class TradingAlgorithm:
                         "score": speed_score
                     })
 
-            # SELL
             elif speed_score < self.sell_threshold and has_position:
                 if self.can_trade(symbol):
                     self.positions[symbol] = False
